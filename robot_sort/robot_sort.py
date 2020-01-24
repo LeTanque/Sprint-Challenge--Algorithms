@@ -115,27 +115,99 @@ class SortingRobot:
 
     def sort(self):
         # Turn the light on to start
-        self.set_light_on()
-        print(l)
-        print("")
+        # self.set_light_on()
         # Loop over commands while light is on
         # Light becomes the base case. We shut it off when we are all the way to the right
-        while self.light_is_on():
-            # print('self._time: ', self._time) # time counter
-            if self.compare_item() == None:
-                # print(robot._list)  # Every index one at a time, swappin
+        # while self.light_is_on():
+            # # print('self._time: ', self._time) # time counter
+            # if self.compare_item() == None:
+            #     # print(robot._list)  # Every index one at a time, swappin
+            #     self.swap_item()
+
+            # # # This runs if the position can move right. stops at index (last)
+            # while self.can_move_right():    # Boolean if index + 1 is possible
+            #     self.move_right()   # if the position is in range, position + 1
+            #     if self.compare_item() == -1 and self.can_move_right():
+            #         self.swap_item() 
+            #     elif self.compare_item() == 1 and not self.can_move_right():
+            #         self.swap_item()
+
+            # # # This runs if the position can move left. Stops at index 0
+            # while self.can_move_left():
+            #     print(l)
+            #     print("")
+            #     self.move_left()
+            #     if self.compare_item() == 1:
+            #         self.swap_item()
+
+            #     elif self.compare_item() == None and self.can_move_right():
+            #         self.swap_item()
+            #     # Turn off the light and shut down the robot
+            #     # If cannot compare item and cannot move right
+        while not self.light_is_on():
+            # This doesn't get hit if we run out of moves to the right. 
+            # IF we hit the end moving to the right, the if block gets hit
+            self.set_light_on()     # Turns on the light in the beginning
+            # print(l)
+            # print("")
+            # print(self._item)
+            # print(self._position)
+            # print(self._time)
+            while self.can_move_right():    # Can we move right?
+                # print("")
+                # print(l)
+                # print("")
+                # print(self._item)
+                # print(self._position)
+                # Picks up an item as in stores a number in _item
+                # Puts None in our list
                 self.swap_item()
-
-            # # This runs if the position can move right. stops at index (last)
-            while self.can_move_right():    # Boolean if index + 1 is possible
-                self.move_right()   # if the position is in range, position + 1
-                if self.compare_item() == -1 and self.can_move_right():
-                    self.swap_item() 
-                elif self.compare_item() == 1 and not self.can_move_right():
+                self.move_right()
+                # print("")
+                # print(l)
+                # print("")
+                # print(self._item)
+                # print(self._position)
+                # # Compares _item at current position it to the item held
+                if self.compare_item() > 0:
+                    # print("")
+                    # print("start. compare_item > 0")
+                    # print(l)
+                    # print("")
+                    # print(self._item)
+                    # print(self._position)
+                    self.swap_item()    # This swaps out pos with None
+                    self.move_left()    # Moves to left
+                    # print("")
+                    # print("just moved left")
+                    # print(l)
+                    # print("")
+                    # print(self._item)
+                    # print(self._position)
                     self.swap_item()
-
-
-        
+                    self.move_right()
+                    # print("")
+                    # print("just moved right")
+                    # print(l)
+                    # print("")
+                    # print(self._item)
+                    # print(self._position)
+                    self.set_light_off()    # Turn off the light
+                # if number to the right is greater, do this:
+                else:
+                    # print("")
+                    # print(">>> else: compare item == 0 or less than 0")
+                    # print(l)
+                    # print("")
+                    # print(self._item)
+                    # print(self._position)
+                    self.move_left()    # Go to correct index
+                    self.swap_item()    # Replace None with current number
+                    self.move_right()   # Continue
+            # This resets the robot. Moves position all the way left
+            if not self.light_is_on():  # Check that light is OFF
+                while self.can_move_left():
+                    self.move_left()
 
 
 
