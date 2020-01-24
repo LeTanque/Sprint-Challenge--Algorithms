@@ -1,8 +1,40 @@
+# NO CAN DOS
+# * You may NOT modify any pre-defined robot methods.
+# * You may NOT store any variables. (`=`)
+# * You may NOT access any instance variables directly. (`self._anything`)
+# * You may NOT use any Python libraries or class methods. (`sorted()`, etc.)
+
+
+# DO THIS STUFF
+# * You may use any pre-defined robot methods.
+# * You may use logical operators. (`if`, `and`, `or`, `not`, etc.)
+# * You may use comparison operators. (`>`, `>=`, `<`, `<=`, `==`, `is`, etc.)
+# * You may use iterators. (`while`, `for`, `break`, `continue`)
+# * You may define robot helper methods, as long as they follow all the rules.
+
+
+# UPER
+# > rearranged the rules so that the things i can do are listed 
+# separately than the things I can't do. This was confusing at first.
+# > class with methods
+# > cannot access instance variables, but I can access methods
+# self.can_move_right, for instance
+# > Inputs received are:
+#   - list to be sorted "l"
+# > input is fixed
+
+# Plan
+# Basically, use these methods to alter the list
+# Read through the methods and try to understand what each one does
+# play around with it if it's not immediately clear
+# Use the light as a boolean toggle
+# Position starts at 0
+# 
+
+
 class SortingRobot:
     def __init__(self, l):
-        """
-        SortingRobot takes a list and sorts it.
-        """
+        """SortingRobot takes a list and sorts it."""
         self._list = l          # The list the robot is tasked with sorting
         self._item = None       # The item the robot is holding
         self._position = 0      # The list position the robot is at
@@ -10,22 +42,19 @@ class SortingRobot:
         self._time = 0          # A time counter (stretch)
 
     def can_move_right(self):
-        """
-        Returns True if the robot can move right or False if it's
+        """Returns True if the robot can move right or False if it's
         at the end of the list.
         """
         return self._position < len(self._list) - 1
 
     def can_move_left(self):
-        """
-        Returns True if the robot can move left or False if it's
+        """Returns True if the robot can move left or False if it's
         at the start of the list.
         """
         return self._position > 0
 
     def move_right(self):
-        """
-        If the robot can move to the right, it moves to the right and
+        """If the robot can move to the right, it moves to the right and
         returns True. Otherwise, it stays in place and returns False.
         This will increment the time counter by 1.
         """
@@ -37,8 +66,7 @@ class SortingRobot:
             return False
 
     def move_left(self):
-        """
-        If the robot can move to the left, it moves to the left and
+        """If the robot can move to the left, it moves to the left and
         returns True. Otherwise, it stays in place and returns False.
         This will increment the time counter by 1.
         """
@@ -50,8 +78,7 @@ class SortingRobot:
             return False
 
     def swap_item(self):
-        """
-        The robot swaps its currently held item with the list item in front
+        """The robot swaps its currently held item with the list item in front
         of it.
         This will increment the time counter by 1.
         """
@@ -77,27 +104,39 @@ class SortingRobot:
             return 0
 
     def set_light_on(self):
-        """
-        Turn on the robot's light
-        """
+        """Turn on the robot's light"""
         self._light = "ON"
     def set_light_off(self):
-        """
-        Turn off the robot's light
-        """
+        """Turn off the robot's light"""
         self._light = "OFF"
     def light_is_on(self):
-        """
-        Returns True if the robot's light is on and False otherwise.
-        """
+        """Returns True if the robot's light is on and False otherwise."""
         return self._light == "ON"
 
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        # Turn the light on to start
+        self.set_light_on()
+        print(l)
+        print("")
+        # Loop over commands while light is on
+        # Light becomes the base case. We shut it off when we are all the way to the right
+        while self.light_is_on():
+            # print('self._time: ', self._time) # time counter
+            if self.compare_item() == None:
+                # print(robot._list)  # Every index one at a time, swappin
+                self.swap_item()
+
+            # # This runs if the position can move right. stops at index (last)
+            while self.can_move_right():    # Boolean if index + 1 is possible
+                self.move_right()   # if the position is in range, position + 1
+                if self.compare_item() == -1 and self.can_move_right():
+                    self.swap_item() 
+                elif self.compare_item() == 1 and not self.can_move_right():
+                    self.swap_item()
+
+
+        
+
 
 
 if __name__ == "__main__":

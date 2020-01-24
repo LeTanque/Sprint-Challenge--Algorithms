@@ -31,13 +31,18 @@ For this portion of the Sprint Challenge, you'll be answering questions posed in
 #### 1. Analyzing runtime _(3 points)_
 
 Given 3 blocks of code, identify the runtime of each. Justify your answer.
-???
+
+> done
+
 
 #### 2. Find the highest floor _(3 points)_
 
 Suppose that you have an n-story building and plenty of eggs. Suppose also that an egg gets broken if it is thrown off floor f or higher, and doesn't get broken if dropped off a floor less than floor f. Devise a strategy to determine the value of f such that the number of dropped + broken eggs is minimized.
 
 Write out your proposed algorithm in plain English or pseudocode AND give the runtime complexity of your solution.
+
+> done
+
 
 ### Code Challenges
 
@@ -51,6 +56,7 @@ Inside the `recursive_count_th` directory you'll find the `count_th.py` file. In
 
 Run `python test_count_th.py` to run the tests for your `count_th()` function to ensure that your implementation is correct.
 
+> done
 
 #### 4. Understand, plan, & implement the Robot Sort algorithm _(6 points)_
 
@@ -58,7 +64,7 @@ You have been given a robot with very basic capabilities:
 
   * It can move left or right.
   * It can pick up an item
-    * If it tries to pick up an item while already holding one, it will swap the items instead.
+  * If it tries to pick up an item while already holding one, it will swap the items instead.
   * It can compare the item it's holding to the item in front of it.
   * It can switch a light on its head on or off.
 
